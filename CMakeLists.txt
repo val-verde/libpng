@@ -491,6 +491,16 @@ set(libpng_sources
   ${libpng_mips_sources}
   ${libpng_powerpc_sources}
 )
+
+if(${CMAKE_SYSTEM_PROCESSOR} STREQUAL "aarch64")
+  set(libpng_sources
+      ${libpng_sources}
+      arm/arm_init.c
+      arm/filter_neon.S
+      arm/filter_neon_intrinsics.c
+  )
+endif()
+
 set(pngtest_sources
   pngtest.c
 )
